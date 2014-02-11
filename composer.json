@@ -1,0 +1,32 @@
+{
+    "name": "dmyers/laravel-pages",
+    "description": "A simple static pages package for Laravel 4.",
+    "keywords": ["laravel", "pages", "static pages"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek Myers",
+            "email": "arcticpro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.x"
+    },
+    "suggest": {
+        "anahkiasen/flatten": "0.4.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers"
+        ],
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-0": {
+            "Dmyers\\Pages": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
