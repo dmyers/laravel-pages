@@ -30,14 +30,6 @@ Add a class alias to `app/config/app.php`, within the `aliases` array.
 )
 ```
 
-Finally, ensure the files directory defined in the config file is created
-and writable by the web server (defaults to public/files).
-
-```console
-$ mkdir public/files
-$ chmod -R 777 public/files
-```
-
 ## Usage
 
 To add a page simply just create a view in your app directory at `views/pages/` and it wiill simply work, you can nest folders and they will map correctly.
