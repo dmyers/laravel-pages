@@ -14,7 +14,7 @@ class Pages
 	
 	public static function routePath()
 	{
-		return static::config('content_path');
+		return static::contentPath();
 	}
 	
 	public static function contentPath()
