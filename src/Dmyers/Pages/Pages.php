@@ -55,7 +55,7 @@ class Pages
 		// Turn slashes into dots for folder views.
 		// Ex: feature/feedback => feature.feedback
 		$path = str_replace(static::contentPath(), '', $path);
-		$page = str_replace('/', '.', $path);
+		$page = trim($path, '/');
 		
 		return $page;
 	}
@@ -68,8 +68,13 @@ class Pages
 			$page = static::homePage();
 		}
 		
+		$view_path = static::viewPath();
+		
+		$page = str_replace('/', '.', $page);
+		$page = str_replace('/', '.', $view_path).$page;
+		
 		try {
-			return \View::make(static::config('view_path').$page);
+			return \View::make($page);
 		} catch (\InvalidArgumentException $e) {
 			// Catch view exceptions and throw exception when no page found.
 			throw new \Exception($e->getMessage());

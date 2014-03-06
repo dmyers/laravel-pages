@@ -33,6 +33,6 @@ return array(
 	|
 	*/
 	
-	'view_path' => 'pages.',
+	'view_path' => 'pages/',
 	
 );
