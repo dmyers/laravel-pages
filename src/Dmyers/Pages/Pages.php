@@ -54,7 +54,7 @@ class Pages
 	{
 		// Turn slashes into dots for folder views.
 		// Ex: feature/feedback => feature.feedback
-		$path = str_replace(static::contentPath(), '', $path);
+		$path = str_replace(static::viewPath(), '', $path);
 		$page = trim($path, '/');
 		
 		return $page;
