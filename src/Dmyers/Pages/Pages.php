@@ -22,6 +22,34 @@ class Pages
 		return static::config('content_path');
 	}
 	
+	public static function viewPath()
+	{
+		return static::config('view_path');
+	}
+	
+	public static function listPages($page_path = '')
+	{
+		$paths = \Config::get('view.paths');
+		$path = $paths[0].'/'.static::viewPath();
+		
+		if (!empty($page_path)) {
+			$path .= '/' . $page_path;
+		}
+		
+		$files = \File::allFiles($path);
+		$pages = array();
+		
+		foreach ($files as $file) {
+			$page = $file->getRelativePathname();
+			$parts = explode('.', $page);
+			$page = $parts[0];
+			
+			$pages[] = $page;
+		}
+		
+		return $pages;
+	}
+	
 	public static function currentPage($path)
 	{
 		// Turn slashes into dots for folder views.
