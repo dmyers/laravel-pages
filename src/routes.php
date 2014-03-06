@@ -7,5 +7,6 @@ if (Pages::homePage()) {
 	Route::get('/', array('uses' => 'PagesController@getIndex'));
 }
 
-Route::get(Pages::routePath().'{path?}', array('as' => 'page', 'uses' => 'PagesController@getIndex'))->where('path', '.+');
-//Route::get('{path?}', array('as' => 'page', 'uses' => 'PagesController@getIndex'))->defaults('path', 'home')->where('path', '.+');
+$pages = Pages::listPages();
+$regex = implode('|', $pages);
+Route::get(Pages::routePath().'{path?}', array('uses' => 'PagesController@getIndex'))->where('path', $regex);
