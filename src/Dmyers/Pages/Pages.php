@@ -60,6 +60,13 @@ class Pages
 		return $page;
 	}
 	
+	public static function exists($path)
+	{
+		$pages = static::listPages();
+		
+		return in_array($path, $pages);
+	}
+	
 	public static function show($path)
 	{
 		$page = static::currentPage($path);
