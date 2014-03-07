@@ -49,8 +49,13 @@ class Pages
 		
 		foreach ($files as $file) {
 			$page = $file->getRelativePathname();
-			$parts = explode('.', $page);
-			$page = $parts[0];
+			$exts = \View::getExtensions();
+			
+			foreach ($exts as $ext => $name) {
+				if (strpos($page, $ext) !== false) {
+					$page = str_replace('.'.$ext, '', $page);
+				}
+			}
 			
 			$pages[] = $page;
 		}
