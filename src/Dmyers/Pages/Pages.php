@@ -27,6 +27,14 @@ class Pages
 		return static::config('view_path');
 	}
 	
+	public static function pageView($path)
+	{
+		$path = str_replace('/', '.', $path);
+		$view_path = str_replace('/', '.', static::viewPath());
+		$page_view = $view_path.$path;
+		return $page_view;
+	}
+	
 	public static function listPages($page_path = '')
 	{
 		$paths = \Config::get('view.paths');
@@ -75,13 +83,10 @@ class Pages
 			$page = static::homePage();
 		}
 		
-		$view_path = static::viewPath();
-		
-		$page = str_replace('/', '.', $page);
-		$page = str_replace('/', '.', $view_path).$page;
+		$page_view = static::pageView($page);
 		
 		try {
-			return \View::make($page);
+			return \View::make($page_view);
 		} catch (\InvalidArgumentException $e) {
 			// Catch view exceptions and throw exception when no page found.
 			throw new \Exception($e->getMessage());
