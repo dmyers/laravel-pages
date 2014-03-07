@@ -77,10 +77,22 @@ class Pages
 	
 	public static function lastModified($path)
 	{
-		$view = static::show($path);
+		$view = static::view($path);
 		$path = $view->getPath();
 		
 		return \File::lastModified($path);
+	}
+	
+	public static function view($path)
+	{
+		$page_view = static::pageView($path);
+		
+		try {
+			return \View::make($page_view);
+		} catch (\InvalidArgumentException $e) {
+			// Catch view exceptions and throw exception when no page found.
+			throw new \Exception($e->getMessage());
+		}
 	}
 	
 	public static function show($path)
@@ -91,13 +103,8 @@ class Pages
 			$page = static::homePage();
 		}
 		
-		$page_view = static::pageView($page);
+		$view = static::view($page);
 		
-		try {
-			return \View::make($page_view);
-		} catch (\InvalidArgumentException $e) {
-			// Catch view exceptions and throw exception when no page found.
-			throw new \Exception($e->getMessage());
-		}
+		return $view->render();
 	}
 }
