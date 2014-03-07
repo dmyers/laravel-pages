@@ -75,6 +75,14 @@ class Pages
 		return in_array($path, $pages);
 	}
 	
+	public static function lastModified($path)
+	{
+		$view = static::show($path);
+		$path = $view->getPath();
+		
+		return \File::lastModified($path);
+	}
+	
 	public static function show($path)
 	{
 		$page = static::currentPage($path);
