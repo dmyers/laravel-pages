@@ -70,9 +70,9 @@ class Pages
 	
 	public static function exists($path)
 	{
-		$pages = static::listPages();
+		$page_view = static::pageView($path);
 		
-		return in_array($path, $pages);
+		return \View::exists($page_view);
 	}
 	
 	public static function lastModified($path)
