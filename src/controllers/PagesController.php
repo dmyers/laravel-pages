@@ -15,7 +15,7 @@ class PagesController extends BaseController
 	public function getIndex($path = null)
 	{
 		try {
-			return Pages::show($path);
+			return Pages::render($path);
 		} catch (Exception $e) {
 			App::abort(404, 'Page not found');
 		}
