@@ -116,4 +116,13 @@ class Pages
 		
 		return $view->render();
 	}
+	
+	public static function render($path)
+	{
+		$page = static::show($path);
+		
+		$response = \Response::make($page, 200);
+		
+		return $response;
+	}
 }
