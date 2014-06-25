@@ -1,5 +1,7 @@
 <?php namespace Dmyers\Pages;
 
+use Carbon\Carbon;
+
 class Pages
 {
 	public static function config($key, $default = null)
@@ -84,8 +86,10 @@ class Pages
 	{
 		$view = static::view($path);
 		$path = $view->getPath();
+		$timestamp = \File::lastModified($path);
+		$carbon = Carbon::createFromTimestamp($timestamp);
 		
-		return \File::lastModified($path);
+		return $carbon;
 	}
 	
 	public static function view($path)
