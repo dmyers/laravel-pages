@@ -30,6 +30,14 @@ Add a class alias to `app/config/app.php`, within the `aliases` array.
 )
 ```
 
+## Configuration
+
+Publish the default config file to your application so you can make modifications.
+
+```console
+$ php artisan config:publish dmyers/laravel-pages
+```
+
 ## Usage
 
 To add a page simply just create a view in your app directory at `views/pages/` and it wiill simply work, you can nest folders and they will map correctly.
