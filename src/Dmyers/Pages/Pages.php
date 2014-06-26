@@ -94,7 +94,13 @@ class Pages
 	
 	public static function view($path)
 	{
-		$page_view = static::pageView($path);
+		$page = static::currentPage($path);
+		
+		if (empty($page)) {
+			$page = static::homePage();
+		}
+		
+		$page_view = static::pageView($page);
 		
 		try {
 			return \View::make($page_view);
@@ -106,13 +112,7 @@ class Pages
 	
 	public static function show($path)
 	{
-		$page = static::currentPage($path);
-		
-		if (empty($page)) {
-			$page = static::homePage();
-		}
-		
-		$view = static::view($page);
+		$view = static::view($path);
 		
 		return $view->render();
 	}
