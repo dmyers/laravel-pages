@@ -123,6 +123,18 @@ class Pages
 		
 		$response = \Response::make($page, 200);
 		
+		$cache = static::config('cache', false);
+		
+		if ($cache) {
+			$modified = static::lastModified($path);
+			$expires = Carbon::now()->addSeconds($cache);
+			
+			$response->setPublic();
+			$response->setMaxAge($cache);
+			$response->setLastModified($modified);
+			$response->setExpires($expires);
+		}
+		
 		return $response;
 	}
 }
