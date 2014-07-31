@@ -40,7 +40,7 @@ $ php artisan config:publish dmyers/laravel-pages
 
 ## Usage
 
-To add a page simply just create a view in your app directory at `views/pages/` and it will simply work, you can nest folders and they will map correctly.
+To add a page, create a view in your app directory at `views/pages/` and the URL will map to the path. You can nest folders and they will be included in the URL.
 
 In your views there is a helper you can use to link to pages:
 
