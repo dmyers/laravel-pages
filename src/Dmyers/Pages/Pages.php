@@ -11,7 +11,7 @@ class Pages
 	
 	public static function homePage()
 	{
-		return static::config('home_page', false);
+		return static::config('home_page');
 	}
 	
 	public static function routePath()
@@ -21,12 +21,12 @@ class Pages
 	
 	public static function contentPath()
 	{
-		return static::config('content_path');
+		return static::config('content_path', 'pages/');
 	}
 	
 	public static function viewPath()
 	{
-		return static::config('view_path');
+		return static::config('view_path', 'pages/');
 	}
 	
 	public static function pageView($path)
