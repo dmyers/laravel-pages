@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * Pages controller.
  * 
@@ -16,7 +18,7 @@ class PagesController extends BaseController
 	{
 		try {
 			return Pages::render($path);
-		} catch (Exception $e) {
+		} catch (NotFoundHttpException $e) {
 			App::abort(404, 'Page not found');
 		}
 	}
