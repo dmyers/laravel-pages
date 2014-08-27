@@ -1,6 +1,7 @@
 <?php namespace Dmyers\Pages;
 
 use Carbon\Carbon;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Pages
 {
@@ -106,7 +107,7 @@ class Pages
 			return \View::make($page_view);
 		} catch (\InvalidArgumentException $e) {
 			// Catch view exceptions and throw exception when no page found.
-			throw new \Exception($e->getMessage());
+			throw new NotFoundHttpException($e->getMessage());
 		}
 	}
 	
