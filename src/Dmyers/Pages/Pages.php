@@ -49,6 +49,7 @@ class Pages
 		
 		$files = \File::allFiles($path);
 		$pages = array();
+		$ignore_paths = static::config('ignore_paths', array());
 		
 		foreach ($files as $file) {
 			$page = $file->getRelativePathname();
@@ -60,7 +61,9 @@ class Pages
 				}
 			}
 			
-			$pages[] = $page;
+			if (!in_array($page, $ignore_paths)) {
+				$pages[] = $page;
+			}
 		}
 		
 		return $pages;
