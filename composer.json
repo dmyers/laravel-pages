@@ -14,7 +14,7 @@
         "illuminate/support": "4.x"
     },
     "suggest": {
-        "anahkiasen/flatten": "0.4.*"
+        "anahkiasen/flatten": "Add full page caching for speed."
     },
     "autoload": {
         "classmap": [
