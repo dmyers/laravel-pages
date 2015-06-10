@@ -96,7 +96,7 @@ class Pages
 		return $carbon;
 	}
 	
-	public static function view($path)
+	public static function view($path, array $params = array())
 	{
 		$page = static::currentPage($path);
 		
@@ -107,23 +107,23 @@ class Pages
 		$page_view = static::pageView($page);
 		
 		try {
-			return \View::make($page_view);
+			return \View::make($page_view, $params);
 		} catch (\InvalidArgumentException $e) {
 			// Catch view exceptions and throw exception when no page found.
 			throw new NotFoundHttpException($e->getMessage());
 		}
 	}
 	
-	public static function show($path)
+	public static function show($path, array $params = array())
 	{
-		$view = static::view($path);
+		$view = static::view($path, $params);
 		
 		return $view->render();
 	}
 	
-	public static function render($path)
+	public static function render($path, array $params = array())
 	{
-		$page = static::show($path);
+		$page = static::show($path, $params);
 		
 		$response = \Response::make($page, 200);
 		
