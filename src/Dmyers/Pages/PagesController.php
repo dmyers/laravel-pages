@@ -1,5 +1,6 @@
-<?php
+<?php namespace Dmyers\Pages;
 
+use Illuminate\Routing\Controller as BaseController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**

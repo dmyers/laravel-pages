@@ -22,9 +22,11 @@ class PagesServiceProvider extends ServiceProvider {
 		
 		include __DIR__.'/../../helpers.php';
 		
-		include __DIR__.'/../../routes.php';
+		$this->app->router->group(['namespace' => 'Dmyers\Pages'], function($router) {
+			include __DIR__.'/../../routes.php';
+		});
 	}
-
+	
 	/**
 	 * Register the service provider.
 	 *
