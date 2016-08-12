@@ -4,7 +4,9 @@ if ( ! function_exists('page_url'))
 {
 	function page_url($page)
 	{
-		if ($page == Pages::homePage()) {
+		$pages = App::make('pages');
+		
+		if ($page == $pages->homePage()) {
 			return url();
 		}
 		
@@ -16,6 +18,8 @@ if ( ! function_exists('page_path'))
 {
 	function page_path($page)
 	{
-		return Pages::routePath().$page;
+		$pages = App::make('pages');
+		
+		return $pages->routePath().$page;
 	}
 }

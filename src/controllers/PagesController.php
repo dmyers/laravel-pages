@@ -16,8 +16,10 @@ class PagesController extends BaseController
 	 */
 	public function getIndex($path = null)
 	{
+		$pages = \App::make('pages');
+		
 		try {
-			return Pages::render($path);
+			return $pages->render($path);
 		} catch (NotFoundHttpException $e) {
 			App::abort(404, 'Page not found');
 		}

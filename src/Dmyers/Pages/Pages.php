@@ -5,43 +5,43 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Pages
 {
-	public static function config($key, $default = null)
+	public function config($key, $default = null)
 	{
 		return \Config::get('laravel-pages::'.$key, $default);
 	}
 	
-	public static function homePage()
+	public function homePage()
 	{
-		return static::config('home_page');
+		return $this->config('home_page');
 	}
 	
-	public static function routePath()
+	public function routePath()
 	{
-		return static::contentPath();
+		return $this->contentPath();
 	}
 	
-	public static function contentPath()
+	public function contentPath()
 	{
-		return static::config('content_path', 'pages/');
+		return $this->config('content_path', 'pages/');
 	}
 	
-	public static function viewPath()
+	public function viewPath()
 	{
-		return static::config('view_path', 'pages/');
+		return $this->config('view_path', 'pages/');
 	}
 	
-	public static function pageView($path)
+	public function pageView($path)
 	{
 		$path = str_replace('/', '.', $path);
-		$view_path = str_replace('/', '.', static::viewPath());
+		$view_path = str_replace('/', '.', $this->viewPath());
 		$page_view = $view_path.$path;
 		return $page_view;
 	}
 	
-	public static function listPages($page_path = '')
+	public function listPages($page_path = '')
 	{
 		$paths = \Config::get('view.paths');
-		$path = $paths[0].'/'.static::viewPath();
+		$path = $paths[0].'/'.$this->viewPath();
 		
 		if (!empty($page_path)) {
 			$path .= '/' . $page_path;
@@ -49,7 +49,7 @@ class Pages
 		
 		$files = \File::allFiles($path);
 		$pages = array();
-		$ignore_paths = static::config('ignore_paths', array());
+		$ignore_paths = $this->config('ignore_paths', array());
 		
 		foreach ($files as $file) {
 			$page = $file->getRelativePathname();
@@ -69,26 +69,26 @@ class Pages
 		return $pages;
 	}
 	
-	public static function currentPage($path)
+	public function currentPage($path)
 	{
 		// Turn slashes into dots for folder views.
 		// Ex: feature/feedback => feature.feedback
-		$path = str_replace(static::viewPath(), '', $path);
+		$path = str_replace($this->viewPath(), '', $path);
 		$page = trim($path, '/');
 		
 		return $page;
 	}
 	
-	public static function exists($path)
+	public function exists($path)
 	{
-		$page_view = static::pageView($path);
+		$page_view = $this->pageView($path);
 		
 		return \View::exists($page_view);
 	}
 	
-	public static function lastModified($path)
+	public function lastModified($path)
 	{
-		$view = static::view($path);
+		$view = $this->view($path);
 		$path = $view->getPath();
 		$timestamp = \File::lastModified($path);
 		$carbon = Carbon::createFromTimestamp($timestamp);
@@ -96,15 +96,15 @@ class Pages
 		return $carbon;
 	}
 	
-	public static function view($path, array $params = array())
+	public function view($path, array $params = array())
 	{
-		$page = static::currentPage($path);
+		$page = $this->currentPage($path);
 		
 		if (empty($page)) {
-			$page = static::homePage();
+			$page = $this->homePage();
 		}
 		
-		$page_view = static::pageView($page);
+		$page_view = $this->pageView($page);
 		
 		try {
 			return \View::make($page_view, $params);
@@ -114,23 +114,23 @@ class Pages
 		}
 	}
 	
-	public static function show($path, array $params = array())
+	public function show($path, array $params = array())
 	{
-		$view = static::view($path, $params);
+		$view = $this->view($path, $params);
 		
 		return $view->render();
 	}
 	
-	public static function render($path, array $params = array())
+	public function render($path, array $params = array())
 	{
-		$page = static::show($path, $params);
+		$page = $this->show($path, $params);
 		
 		$response = \Response::make($page, 200);
 		
-		$cache = static::config('cache', false);
+		$cache = $this->config('cache', false);
 		
 		if ($cache) {
-			$modified = static::lastModified($path);
+			$modified = $this->lastModified($path);
 			$expires = Carbon::now()->addSeconds($cache);
 			
 			$response->setPublic();

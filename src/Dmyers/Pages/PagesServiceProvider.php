@@ -32,7 +32,9 @@ class PagesServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->bind('pages', function ($app) {
+			return new Pages;
+		});
 	}
 
 	/**
