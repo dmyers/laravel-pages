@@ -21,9 +21,6 @@
             "src/migrations",
             "src/controllers"
         ],
-        "files": [
-            "src/helpers.php"
-        ],
         "psr-0": {
             "Dmyers\\Pages": "src/"
         }

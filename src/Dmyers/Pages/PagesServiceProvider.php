@@ -20,6 +20,8 @@ class PagesServiceProvider extends ServiceProvider {
 	{
 		$this->package('dmyers/laravel-pages');
 		
+		include __DIR__.'/../../helpers.php';
+		
 		include __DIR__.'/../../routes.php';
 	}
 
