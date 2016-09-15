@@ -1,6 +1,6 @@
-# Pages Package for Laravel 4
+# Pages Package for Laravel 5
 
-Pages is a static page system for Laravel 4 applications.
+Pages is a static page system for Laravel 5 applications.
 
 ## Installation via Composer
 
@@ -15,27 +15,31 @@ After that, run composer install to install Pages.
 Add the service provider to `app/config/app.php`, within the `providers` array.
 
 ```php
-'providers' => array(
+'providers' => [
     // ...
     'Dmyers\Pages\PagesServiceProvider',
-)
+]
 ```
 
 Add a class alias to `app/config/app.php`, within the `aliases` array.
 
 ```php
-'aliases' => array(
+'aliases' => [
     // ...
     'Pages' => 'Dmyers\Pages\Facade',
-)
+]
 ```
+
+## Laravel 4
+
+Use the `1.0` branch or the `v1.*` tags for Laravel 4 support.
 
 ## Configuration
 
 Publish the default config file to your application so you can make modifications.
 
 ```console
-$ php artisan config:publish dmyers/laravel-pages
+$ php artisan vendor:publish
 ```
 
 ## Usage

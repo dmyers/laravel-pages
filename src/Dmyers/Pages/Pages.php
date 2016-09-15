@@ -7,7 +7,7 @@ class Pages
 {
 	public function config($key, $default = null)
 	{
-		return \Config::get('laravel-pages::'.$key, $default);
+		return \Config::get('pages.'.$key, $default);
 	}
 	
 	public function homePage()
@@ -48,8 +48,8 @@ class Pages
 		}
 		
 		$files = \File::allFiles($path);
-		$pages = array();
-		$ignore_paths = $this->config('ignore_paths', array());
+		$pages = [];
+		$ignore_paths = $this->config('ignore_paths', []);
 		
 		foreach ($files as $file) {
 			$page = $file->getRelativePathname();
@@ -96,7 +96,7 @@ class Pages
 		return $carbon;
 	}
 	
-	public function view($path, array $params = array())
+	public function view($path, array $params = [])
 	{
 		$page = $this->currentPage($path);
 		
@@ -114,14 +114,14 @@ class Pages
 		}
 	}
 	
-	public function show($path, array $params = array())
+	public function show($path, array $params = [])
 	{
 		$view = $this->view($path, $params);
 		
 		return $view->render();
 	}
 	
-	public function render($path, array $params = array())
+	public function render($path, array $params = [])
 	{
 		$page = $this->show($path, $params);
 		

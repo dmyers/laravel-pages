@@ -1,16 +1,10 @@
 <?php namespace Dmyers\Pages;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
 
 class PagesServiceProvider extends ServiceProvider {
-
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
-
+	
 	/**
 	 * Bootstrap the application events.
 	 *
@@ -18,13 +12,15 @@ class PagesServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('dmyers/laravel-pages');
-		
 		include __DIR__.'/../../helpers.php';
 		
 		$this->app->router->group(['namespace' => 'Dmyers\Pages'], function($router) {
 			include __DIR__.'/../../routes.php';
 		});
+		
+		$this->publishes([
+			__DIR__.'/../../config/pages.php' => config_path('pages.php'),
+		]);
 	}
 	
 	/**
@@ -34,19 +30,9 @@ class PagesServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind('pages', function ($app) {
+		$this->app->bind('pages', function($app) {
 			return new Pages;
 		});
 	}
-
-	/**
-	 * Get the services provided by the provider.
-	 *
-	 * @return array
-	 */
-	public function provides()
-	{
-		return array();
-	}
-
+	
 }
