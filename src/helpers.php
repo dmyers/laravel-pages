@@ -7,7 +7,7 @@ if ( ! function_exists('page_url'))
 		$pages = App::make('pages');
 		
 		if ($page == $pages->homePage()) {
-			return url();
+			return url('/');
 		}
 		
 		return url(page_path($page));
