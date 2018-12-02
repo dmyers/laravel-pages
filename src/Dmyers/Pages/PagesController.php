@@ -22,7 +22,7 @@ class PagesController extends BaseController
 		try {
 			return $pages->render($path);
 		} catch (NotFoundHttpException $e) {
-			\App::abort(404, 'Page not found');
+			abort(404, 'Page not found');
 		}
 	}
 }
