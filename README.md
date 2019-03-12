@@ -26,7 +26,7 @@ Add a class alias to `app/config/app.php`, within the `aliases` array.
 ```php
 'aliases' => [
     // ...
-    'Pages' => 'Dmyers\Pages\Facade',
+    'Pages' => Dmyers\Pages\Facade::class,
 ]
 ```
 
