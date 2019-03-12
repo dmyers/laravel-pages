@@ -17,7 +17,7 @@ Add the service provider to `app/config/app.php`, within the `providers` array.
 ```php
 'providers' => [
     // ...
-    'Dmyers\Pages\PagesServiceProvider',
+    Dmyers\Pages\PagesServiceProvider::class,
 ]
 ```
 
