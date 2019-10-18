@@ -10,20 +10,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class PagesController extends BaseController
 {
-	/**
+    /**
      * Renders a page for the request.
-	 * 
+     * 
      * @param  mixed  $path
-	 * @return View
-	 */
-	public function getIndex($path = null)
-	{
-		$pages = \App::make('pages');
-		
-		try {
-			return $pages->render($path);
-		} catch (NotFoundHttpException $e) {
-			abort(404, 'Page not found');
-		}
-	}
+     * @return View
+     */
+    public function render($path = null)
+    {
+        $pages = \App::make('pages');
+        
+        try {
+            return $pages->render($path);
+        } catch (NotFoundHttpException $e) {
+            abort(404, 'Page not found');
+        }
+    }
 }
