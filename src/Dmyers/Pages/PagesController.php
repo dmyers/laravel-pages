@@ -13,6 +13,7 @@ class PagesController extends BaseController
 	/**
 	 * Index action.
 	 * 
+     * @param  mixed  $path
 	 * @return View
 	 */
 	public function getIndex($path = null)
