@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PagesController extends BaseController
 {
 	/**
-	 * Index action.
+     * Renders a page for the request.
 	 * 
      * @param  mixed  $path
 	 * @return View
