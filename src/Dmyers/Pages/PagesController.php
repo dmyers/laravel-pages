@@ -1,5 +1,6 @@
 <?php namespace Dmyers\Pages;
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Routing\Controller as BaseController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -25,5 +26,15 @@ class PagesController extends BaseController
         } catch (NotFoundHttpException $e) {
             abort(404, 'Page not found');
         }
+    }
+    
+    /**
+     * Redirect home route to index.
+     * 
+     * @return Redirect
+     */
+    public function home()
+    {
+        return Redirect::to('/');
     }
 }

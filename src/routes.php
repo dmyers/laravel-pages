@@ -1,9 +1,7 @@
 <?php
 
 if (Pages::homePage()) {
-    Route::get(Pages::routePath().Pages::homePage(), function() {
-        return Redirect::to('/');
-    });
+    Route::get(Pages::routePath().Pages::homePage(), 'PagesController@home');
     Route::get('/', 'PagesController@render');
 }
 
