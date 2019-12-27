@@ -22,7 +22,10 @@
         ],
         "psr-0": {
             "Dmyers\\Pages": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "extra": {
         "laravel": {

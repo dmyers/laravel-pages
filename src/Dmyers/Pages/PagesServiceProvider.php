@@ -12,8 +12,6 @@ class PagesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include __DIR__.'/../../helpers.php';
-        
         if (\Config::get('pages.routes', true)) {
             $this->app->router->group(['namespace' => 'Dmyers\Pages'], function($router) {
                 include __DIR__.'/../../routes.php';
