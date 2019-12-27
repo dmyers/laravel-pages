@@ -10,15 +10,6 @@ To get started, use Composer to add the package to your project's dependencies:
 composer require dmyers/laravel-pages
 ```
 
-Add a class alias to `app/config/app.php`, within the `aliases` array.
-
-```php
-'aliases' => [
-    // ...
-    'Pages' => Dmyers\Pages\Facade::class,
-]
-```
-
 ## Laravel 4
 
 Use the `1.0` branch or the `v1.*` tags for Laravel 4 support.
