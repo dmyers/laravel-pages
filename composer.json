@@ -31,7 +31,10 @@
         "laravel": {
             "providers": [
                 "Dmyers\\Pages\\PagesServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Pages": "Dmyers\\Pages\\Facade"
+            }
         }
     },
     "minimum-stability": "dev"
