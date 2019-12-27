@@ -2,15 +2,13 @@
 
 Pages is a static page system for Laravel 5 applications.
 
-## Installation via Composer
+## Installation
 
-Add this to you composer.json file, in the require object:
+To get started, use Composer to add the package to your project's dependencies:
 
-```javascript
-"dmyers/laravel-pages": "dev-master"
+```bash
+composer require dmyers/laravel-pages
 ```
-
-After that, run composer install to install Pages.
 
 Add a class alias to `app/config/app.php`, within the `aliases` array.
 
