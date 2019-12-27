@@ -24,7 +24,7 @@ $ php artisan vendor:publish
 
 ## Usage
 
-To add a page, create a view in your app directory at `views/pages/` and the URL will map to the path. You can nest folders and they will be included in the URL.
+To add a page, create a view in your resources directory at `resources/views/pages` and the URL will map to the path. You can nest folders and they will be included in the URL.
 
 In your views there is a helper you can use to link to pages:
 
