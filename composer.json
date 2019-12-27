@@ -24,5 +24,12 @@
             "Dmyers\\Pages": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dmyers\\Pages\\PagesServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev"
 }
