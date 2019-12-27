@@ -22,7 +22,7 @@ class PagesServiceProvider extends ServiceProvider
         
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../../config/pages.php' => config_path('pages.php'),
+                __DIR__.'/../../../config/pages.php' => config_path('pages.php'),
             ]);
         }
     }
