@@ -12,15 +12,6 @@ Add this to you composer.json file, in the require object:
 
 After that, run composer install to install Pages.
 
-Add the service provider to `app/config/app.php`, within the `providers` array.
-
-```php
-'providers' => [
-    // ...
-    Dmyers\Pages\PagesServiceProvider::class,
-]
-```
-
 Add a class alias to `app/config/app.php`, within the `aliases` array.
 
 ```php
