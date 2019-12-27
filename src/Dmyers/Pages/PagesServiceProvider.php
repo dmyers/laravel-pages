@@ -20,9 +20,11 @@ class PagesServiceProvider extends ServiceProvider
             });
         }
         
-        $this->publishes([
-            __DIR__.'/../../config/pages.php' => config_path('pages.php'),
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../../config/pages.php' => config_path('pages.php'),
+            ]);
+        }
     }
     
     /**
@@ -35,5 +37,5 @@ class PagesServiceProvider extends ServiceProvider
         $this->app->bind('pages', function($app) {
             return new Pages;
         });
-    }    
+    }
 }
