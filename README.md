@@ -1,6 +1,6 @@
-# Pages Package for Laravel 5
+# Pages Package for Laravel
 
-Pages is a static page system for Laravel 5 applications.
+Pages is a static page system for Laravel applications.
 
 ## Installation
 
