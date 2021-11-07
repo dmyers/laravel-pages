@@ -1,6 +1,6 @@
 {
     "name": "dmyers/laravel-pages",
-    "description": "A simple static pages package for Laravel 5.",
+    "description": "A simple static pages package for Laravel.",
     "keywords": ["laravel", "pages", "static pages"],
     "license": "MIT",
     "authors": [
@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^5.4 || ^7.0 || ^8.0",
-        "illuminate/support": "~5.0"
+        "illuminate/support": "^5.0|^6.0|^7.0",
     },
     "suggest": {
         "anahkiasen/flatten": "Add full page caching for speed."
